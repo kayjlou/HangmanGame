@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Hangman Puppy Style</h1>
+    </div>
+    <div id="directions"><p>Press any letter to begin guessing!</p></div>
+
+    <!-- Holds game content to be updated -->
+    <div id="container">
+      <div id="game">
+        <!-- Holds wins -->
+        <div id="wins" class="updates">Wins:</div>
+        <!-- Holds losses -->
+        <div id="losses" class="updates">Losses:</div>
+        <!-- holds the current word to be guessed -->
+        <div id="current-word" class="updates">Current Word:</div>
+        <!-- Holds the guessed letters  -->
+        <div id="guessed-letters" class="updates">Guessed Letters:</div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/game.js"></script>
+  </body>
+</html>

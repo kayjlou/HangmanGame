@@ -1,0 +1,31 @@
+body {
+  background-color: lightblue;
+}
+
+.header {
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  background-color: white;
+  padding: 10px;
+  font-size: 50px;
+  text-align: center;
+  border: gray 3px solid
+}
+
+#directions {
+  text-align: center;
+}
+
+#game {
+  margin: auto;
+  padding: 20px;
+}
+
+.updates {
+  padding: 20px;
+  border: white solid 3px;
+  margin: 10px;
+}
