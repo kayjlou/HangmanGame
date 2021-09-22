@@ -10,6 +10,8 @@ let ltrsInWord = [];
 let ltrsMatched = [];
 //Contains letter that have been guessed
 let ltrsGuessed = [];
+let currentWord;
+let displayedWord;
 
 // let userGuess = null;
 
@@ -29,8 +31,8 @@ let totalGuesses = 0;
 // let remainingLtrs = currentWord.length;
 
 //Function for when page first loads
-startGame = () => {
-  let currentWord = words[Math.floor(Math.random() * words.length)];
+const startGame = () => {
+  currentWord = words[Math.floor(Math.random() * words.length)];
   console.log(`The chosen word is ${currentWord}`);
 
   //Split this word into individual letters
@@ -45,7 +47,7 @@ startGame = () => {
 };
 
 //Function to run whenever uses guesses a letter
-updateAll = () => {
+const updateAll = () => {
   if (guessesLeft === 0) {
     restartGame();
   } else {
@@ -63,46 +65,49 @@ updateAll = () => {
 };
 
 //Update to check incorrect guesses aka letter not there
-updateGuessedLtrs = letter => {
+const updateGuessedLtrs = letter => {
+  console.log("letter", letter)
   if (ltrsGuessed.indexOf(letter) === -1 && ltrsInWord.indexOf(letter) === -1) {
     //push letter into ltrsGuessedArray
     ltrsGuessed.push(letter);
     //Decrease guessesLEft
     guessesLeft--;
     //Update HTML
-    document.querySelector("#guesses-left").innerHTML = guessesLeft;
-    document.querySelector("#guessed-letters").innerHTML = ltrsGuessed.join(
+    document.querySelector("#guesses-left").textContent = `Guesses Left:  ${guessesLeft}`;
+    document.querySelector("#guessed-letters").textContent = ltrsGuessed.join(
       ", "
     );
   }
 };
 
-showWord = () => {
-  let displayedWord = "";
+//display word 
+const showWord = () => {
+  displayedWord = ""
 
   //loop through letters we are trying to guess
-  for (var i = 0; i < ltrsInWord.length[i]; i++) {
+  for (var i = 0; i < ltrsInWord.length; i++) {
     //If it matches then display the letter
-    if (ltrsMatched.indexOf(ltrsInWord[i]) !== -1) {
+    if (ltrsMatched.indexOf(ltrsInWord[i]) != -1) {
       displayedWord += ltrsInWord[i];
     } else {
-      displayedWord += "_";
+      displayedWord += " _ "
+      console.log("HI", displayedWord)
     }
   }
   //Update HTML page
-  document.querySelector("#current-word").innerHtml = displayedWord;
+  document.querySelector("#current-word").textContent = `Current Word : ${displayedWord}`;
 };
 
 //Updates guesses
-updateGuessesLeft = () => {
+const updateGuessesLeft = () => {
   //User gets 5 more guess than length of word
   totalGuesses = ltrsInWord.length + 5;
   guessesLeft = totalGuesses;
   //Update html
-  document.querySelector("#guesses-left").innerHtml = guessesLeft;
+  document.querySelector("#guesses-left").textContent = `Guesses Left: ${guessesLeft}`;
 };
 
-updateMatchedLtrs = letter => {
+const updateMatchedLtrs = letter => {
   for (var i = 0; i < ltrsInWord.length; i++) {
     if (letter === ltrsInWord[i] && ltrsMatched.indexOf(letter) === -1) {
       ltrsMatched.push(letter);
